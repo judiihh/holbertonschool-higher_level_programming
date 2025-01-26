@@ -1,5 +1,4 @@
-def square_matrix_simple(matrix=[]):
-    # Handle cases where matrix is empty or contains empty rows
-    if not matrix:
-        return []
-    return [[value * value for value in row] for row in matrix]
+#!/usr/bin/python3
+# Creates a new matrix where each value is the square of the original matrix
+def square_matrix_simple(matrix=[]): # This defines the prototype
+    return [[value ** 2 for value in row] for row in matrix]
