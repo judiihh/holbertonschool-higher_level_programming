@@ -1,0 +1,67 @@
+The ``add_integer`` module
+==========================
+
+Using ``add_integer``
+---------------------
+
+Importing the module
+    >>> add_integer = __import__("0-add_integer").add_integer
+
+Checking the module Docstring
+    >>> docstr = __import__("0-add_integer").__doc__
+    >>> len(docstr) > 1
+    True
+
+Adding two integers
+    >>> add_integer(1, 2)
+    3
+
+Adding a positive and a negative integer
+    >>> add_integer(100, -2)
+    98
+
+Adding an integer with the default value for b
+    >>> add_integer(2)
+    100
+
+Adding a float and an integer
+    >>> add_integer(100.3, -2)
+    98
+
+Adding two floats
+    >>> add_integer(4.5, 5.5)
+    9
+
+Adding a float with the default value for b
+    >>> add_integer(4.5)
+    102
+
+Handling invalid type for a (string)
+    >>> add_integer("4", 5)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Handling invalid type for b (string)
+    >>> add_integer(4, "School")
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+Handling invalid type for a (None)
+    >>> add_integer(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+Handling float overflow
+    >>> add_integer(1, float('inf'))
+    Traceback (most recent call last):
+    ...
+    OverflowError: Cannot convert float infinity to int
+
+Handling NaN
+    >>> add_integer(1, float('nan'))
+    Traceback (most recent call last):
+    ...
+    ValueError: cannot convert float NaN to integer
