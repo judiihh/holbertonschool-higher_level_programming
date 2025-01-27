@@ -1,0 +1,45 @@
+The ``say_my_name`` module
+==========================
+
+Using ``say_my_name``
+---------------------
+
+Importing the module
+    >>> say_my_name = __import__("3-say_my_name").say_my_name
+
+Checking the module Docstring
+    >>> docstr = __import__("3-say_my_name").__doc__
+    >>> len(docstr) > 1
+    True
+
+Printing full name with both first and last name
+    >>> say_my_name("John", "Doe")
+    My name is John Doe
+
+Printing full name with only first name
+    >>> say_my_name("John")
+    My name is John 
+
+Handling invalid type for first_name (integer)
+    >>> say_my_name(123, "Doe")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+Handling invalid type for last_name (integer)
+    >>> say_my_name("John", 456)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+Handling invalid type for both first_name and last_name (None)
+    >>> say_my_name(None, None)
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+Handling missing 2 arguments
+    >>> say_my_name()
+    Traceback (most recent call last):
+        ...
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
