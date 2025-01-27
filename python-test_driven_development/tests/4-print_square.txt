@@ -1,0 +1,52 @@
+The ``print_square`` module
+===========================
+
+Using ``print_square``
+----------------------
+
+Importing the module
+    >>> print_square = __import__("4-print_square").print_square
+
+Checking the module Docstring
+    >>> docstr = __import__("4-print_square").__doc__
+    >>> len(docstr) > 1
+    True
+
+Printing a 2x2 square
+    >>> print_square(2)
+    ##
+    ##
+
+Printing a 4x4 square
+    >>> print_square(4)
+    ####
+    ####
+    ####
+    ####
+
+Printing a 0x0 square
+    >>> print_square(0)
+
+Handling invalid type for size (float)
+    >>> print_square(2.5)
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+Handling invalid type for size (string)
+    >>> print_square("3")
+    Traceback (most recent call last):
+        ...
+    TypeError: size must be an integer
+
+Handling negative size
+    >>> print_square(-3)
+    Traceback (most recent call last):
+        ...
+    ValueError: size must be >= 0
+
+Handling missing argument
+    >>> print_square()
+    Traceback (most recent call last):
+        ...
+    TypeError: print_square() missing 1 required positional argument: 'size'
