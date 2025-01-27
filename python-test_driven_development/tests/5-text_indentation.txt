@@ -1,0 +1,78 @@
+The ``text_indentation`` module
+===============================
+
+Using ``text_indentation``
+--------------------------
+
+Importing the module
+    >>> text_indentation = __import__("5-text_indentation").text_indentation
+
+Checking the module Docstring
+    >>> docstr = __import__("5-text_indentation").__doc__
+    >>> len(docstr) > 1
+    True
+
+Printing text with periods, question marks, and colons
+    >>> text_indentation("Hello. How are you? I am fine: thank you.")
+    Hello.
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+    I am fine:
+    <BLANKLINE>
+    thank you.
+    <BLANKLINE>
+
+Handling text without any special characters
+    >>> text_indentation("Hello world")
+    Hello world
+
+Handling text with multiple special characters in a row
+    >>> text_indentation("Hello... How are you?? I am fine:: thank you.")
+    Hello.
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    .
+    <BLANKLINE>
+    How are you?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    I am fine:
+    <BLANKLINE>
+    :
+    <BLANKLINE>
+    thank you.
+    <BLANKLINE>
+
+Handling invalid type for text (integer)
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Handling invalid type for text (None)
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: text must be a string
+
+Handling empty string
+    >>> text_indentation("")
+
+Handling special characters and no characters
+    >>> text_indentation("Holberton. School? How are you: John")
+    Holberton.
+    <BLANKLINE>
+    School?
+    <BLANKLINE>
+    How are you:
+    <BLANKLINE>
+    John
+
+Handling missing one argument
+    >>> text_indentation()
+    Traceback (most recent call last):
+        ...
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
