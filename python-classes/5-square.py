@@ -42,7 +42,7 @@ class Square:
     def size(self, value):
         """
 
-        Sets the size of the sqaure after validating the value.
+        Sets the size of the square after validating the value.
 
         Args:
             value (int): The new size of the square (must be >= 0).
