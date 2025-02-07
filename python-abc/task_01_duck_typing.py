@@ -21,6 +21,8 @@ class Circle(Shape):
     """Circle shape with a radius"""
 
     def __init__(self, radius):
+        if radius < 0:
+            raise ValueError("Radius cannot be negative")
         self.radius = radius
 
     def area(self):
