@@ -20,3 +20,29 @@ ValueError: age must be greater than 0
 Traceback (most recent call last):
     ...
 ValueError: distance must be greater than 0
+
+# New test cases for invalid types
+>>> bg.integer_validator("age", (4,))
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", [3])
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", True)
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", {3, 4})
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
+
+>>> bg.integer_validator("age", None)
+Traceback (most recent call last):
+    ...
+TypeError: age must be an integer
