@@ -34,7 +34,7 @@ class Student:
             attrs (list, optional): List of attribute names to retrieve.
 
         Returns:
-            dict: A dictionary containing the specified attributes.
+            dict: A dict containing the specified attributes.
         """
         if isinstance(attrs, list) and all(
             isinstance(attr, str) for attr in attrs
