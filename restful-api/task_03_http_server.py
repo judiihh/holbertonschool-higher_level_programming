@@ -22,7 +22,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
         elif self.path == "/status":
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
-            status = {"status": "OK"}
+            status = {"OK"}
             response = json.dumps(status, separators=(",", ":")).encode("utf-8")
             self.send_header("Content-Length", str(len(response)))
             self.end_headers()
@@ -38,7 +38,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
         else:
             self.send_response(404)
             self.send_header("Content-Type", "application/json")
-            error_message = {"error": "Endpoint not found"}
+            error_message = {"Endpoint not found"}
             response = json.dumps(error_message, separators=(",", ":")).encode("utf-8")
             self.send_header("Content-Length", str(len(response)))
             self.end_headers()
