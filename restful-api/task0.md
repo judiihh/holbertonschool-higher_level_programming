@@ -1,4 +1,4 @@
-# Task 0 - HTTP/HTTPS Basics
+# HTTP/HTTPS Basics
 
 ## 1. Differences Between HTTP and HTTPS
 
