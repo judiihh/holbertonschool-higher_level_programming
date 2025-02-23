@@ -1,3 +1,10 @@
+#!/usr/bin/python3
+"""
+This module defines functions for fetching and printing
+posts from a RESTful API,
+and for fetching and saving posts to a CSV file.
+"""
+
 import requests
 import csv
 
