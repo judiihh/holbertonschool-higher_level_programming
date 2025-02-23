@@ -22,8 +22,8 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
         elif self.path == "/status":
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
-            status = {"OK"}
-            response = json.dumps(status, separators=(",", ":")).encode("utf-8")
+            status = {"status": "OK"}
+            response = json.dumps(status).encode("utf-8")
             self.send_header("Content-Length", str(len(response)))
             self.end_headers()
             self.wfile.write(response)
