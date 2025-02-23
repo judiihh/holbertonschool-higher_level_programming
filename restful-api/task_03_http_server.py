@@ -24,10 +24,18 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.send_header("Content-Length", str(len(response)))
             self.end_headers()
             self.wfile.write(response)
+        elif self.path == "/info":
+            self.send_response(200)
+            self.send_header("Content-type", "application/json")
+            info = {"version": "1.0", "description": "A simple API built with http.server"}
+            response = json.dumps(info).encode("utf-8")
+            self.send_header("Content-Length", str(len(response)))
+            self.end_headers()
+            self.wfile.write(response)
         else:
             self.send_response(404)
             self.send_header("Content-type", "application/json")
-            error_message = {"error": "Endpoint not found"}
+            error_message = {"error": "404 Not found"}
             response = json.dumps(error_message).encode("utf-8")
             self.send_header("Content-Length", str(len(response)))
             self.end_headers()
