@@ -134,12 +134,12 @@ curl -A "MyCustomAgent/1.0" https://jsonplaceholder.typicode.com/posts
 
 ## 8. Summary
 
-- **`curl --version`** → Check installation.  
-- **`curl URL`** → Fetch data.  
-- **`curl -I URL`** → Get headers only.  
-- **`curl -X POST -d "data"`** → Send data via `POST`.  
-- **`curl -X POST -H "Content-Type: application/json" -d "json data"`** → Send JSON data.  
-- **`curl -L URL`** → Follow redirects.  
-- **`curl -o filename URL`** → Save response to a file.  
+- **`curl --version`** → Check installation.
+- **`curl URL`** → Fetch data.
+- **`curl -I URL`** → Get headers only.
+- **`curl -X POST -d "data"`** → Send data via `POST`.
+- **`curl -X POST -H "Content-Type: application/json" -d "json data"`** → Send JSON data.
+- **`curl -L URL`** → Follow redirects.
+- **`curl -o filename URL`** → Save response to a file.
 
 Using **curl**, you can efficiently interact with APIs, debug requests, and automate data retrieval!
