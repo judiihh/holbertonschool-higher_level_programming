@@ -57,4 +57,5 @@ cat filename.sql | mysql -hlocalhost -uroot -p database_name
 ## 👤 Author
 - Name: Judith Espinal
 - GitHub: judiihh
+
 🎓 Project completed as part of Holberton School's curriculum.
