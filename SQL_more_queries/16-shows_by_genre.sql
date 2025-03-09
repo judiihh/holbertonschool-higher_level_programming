@@ -1,7 +1,7 @@
--- This script lists all shows and all genres linked to that show from the hbtn_0d_tvshows database.
-SELECT ts.title, g.name
-FROM tv_shows AS ts
-LEFT JOIN tv_show_genres AS tsg ON ts.id = tsg.show_id
-LEFT JOIN genres AS g ON tsg.genre_id = g.id
-ORDER BY ts.title ASC, g.name ASC;
-
+-- List all shows and genres linked to each show
+SELECT title, tv_genres.name AS name FROM tv_shows
+LEFT JOIN (
+    tv_show_genres JOIN tv_genres
+    ON tv_show_genres.genre_id = tv_genres.id
+) ON tv_shows.id = tv_show_genres.show_id
+ORDER BY title, name;
