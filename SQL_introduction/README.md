@@ -52,6 +52,7 @@ To execute any of the SQL scripts, use the MySQL command-line tool:
 
 ```bash
 cat filename.sql | mysql -hlocalhost -uroot -p database_name
+```
 
 ## 👤 Author
 Name: Judith Espinal
