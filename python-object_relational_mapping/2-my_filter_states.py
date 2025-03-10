@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Script that takes in an argument and displays all values in the states table
-where name matches the argument.
+where name matches the argument (case-sensitive).
 """
 import sys
 import MySQLdb
@@ -25,10 +25,10 @@ if __name__ == "__main__":
     # Create a cursor object to execute queries
     cursor = db.cursor()
 
-    # Use format to construct the SQL query (prone to SQL injection)
+    # Use BINARY to enforce case-sensitive search
     query = (
         "SELECT * FROM states "
-        "WHERE name = '{}' "
+        "WHERE BINARY name = '{}' "
         "ORDER BY id ASC".format(state_name)
     )
     cursor.execute(query)
