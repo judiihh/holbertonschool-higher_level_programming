@@ -59,7 +59,14 @@ def json_load():
 def csv_load():
     with open("products.csv", "r", newline="", encoding="utf-8") as csv_f:
         d_reader = csv.DictReader(csv_f)
-        return [row for row in d_reader]
+        return [
+            {
+                "id": int(row["id"]),
+                "name": row["name"],
+                "category": row["category"],
+                "price": float(row["price"])
+            } for row in d_reader
+        ]
 
 def sql_load():
     connection = sqlite3.connect("products.db")
