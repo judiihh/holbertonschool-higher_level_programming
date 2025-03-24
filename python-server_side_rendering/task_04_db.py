@@ -2,19 +2,25 @@ from flask import Flask, render_template, request
 import json
 import csv
 import sqlite3
+import os
 from typing import List, Dict, Any
 
 app = Flask(__name__)
 
+# Get the directory where the script is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 def get_json_data() -> List[Dict[str, Any]]:
     """Get product data from JSON file"""
-    with open('products.json', 'r') as f:
+    json_path = os.path.join(BASE_DIR, 'products.json')
+    with open(json_path, 'r') as f:
         return json.load(f)
 
 def get_csv_data() -> List[Dict[str, Any]]:
     """Get product data from CSV file"""
+    csv_path = os.path.join(BASE_DIR, 'products.csv')
     products = []
-    with open('products.csv', 'r') as f:
+    with open(csv_path, 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             products.append({
@@ -27,21 +33,25 @@ def get_csv_data() -> List[Dict[str, Any]]:
 
 def get_sql_data() -> List[Dict[str, Any]]:
     """Get product data from SQLite database"""
-    conn = sqlite3.connect('products.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT id, name, category, price FROM Products')
-    rows = cursor.fetchall()
-    conn.close()
-    
-    return [
-        {
-            'id': row[0],
-            'name': row[1],
-            'category': row[2],
-            'price': row[3]
-        }
-        for row in rows
-    ]
+    db_path = os.path.join(BASE_DIR, 'products.db')
+    try:
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        cursor.execute('SELECT id, name, category, price FROM Products')
+        rows = cursor.fetchall()
+        conn.close()
+        
+        return [
+            {
+                'id': row[0],
+                'name': row[1],
+                'category': row[2],
+                'price': row[3]
+            }
+            for row in rows
+        ]
+    except sqlite3.Error as e:
+        raise Exception(f"Database error: {str(e)}")
 
 @app.route('/')
 def index():

@@ -15,7 +15,9 @@ def create_database():
         INSERT INTO Products (id, name, category, price)
         VALUES
         (1, 'Laptop', 'Electronics', 799.99),
-        (2, 'Coffee Mug', 'Home Goods', 15.99)
+        (2, 'Coffee Mug', 'Home Goods', 15.99),
+        (3, 'Headphones', 'Electronics', 99.99),
+        (4, 'Desk Chair', 'Furniture', 199.99)
     ''')
     conn.commit()
     conn.close()
