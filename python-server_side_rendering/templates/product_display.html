@@ -11,6 +11,13 @@
             margin: 0 auto;
             padding: 20px;
         }
+        .error {
+            color: red;
+            padding: 10px;
+            border: 1px solid red;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -24,45 +31,55 @@
         th {
             background-color: #f5f5f5;
         }
-        .error {
-            color: red;
-            padding: 10px;
-            border: 1px solid red;
-            margin: 10px 0;
-            border-radius: 4px;
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .source-links {
+            margin-bottom: 20px;
+        }
+        .source-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #0066cc;
         }
     </style>
 </head>
 <body>
     <h1>Product Display</h1>
     
+    <div class="source-links">
+        <a href="/?source=json">JSON Source</a>
+        <a href="/?source=csv">CSV Source</a>
+        <a href="/?source=sql">SQL Source</a>
+    </div>
+
     {% if error %}
     <div class="error">
         {{ error }}
     </div>
-    {% else %}
-        {% if products %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.category }}</td>
-                    <td>${{ "%.2f"|format(product.price) }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-        <p>No products found.</p>
-        {% endif %}
+    {% endif %}
+
+    {% if products %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category }}</td>
+                <td>${{ "%.2f"|format(product.price) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% endif %}
 </body>
 </html> 
